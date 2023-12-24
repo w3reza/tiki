@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bus;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class busController extends Controller
@@ -16,7 +17,8 @@ class busController extends Controller
 */
     public function create()
     {
-        return view('backend.pages.buses.create');
+        $locations = Location::get();
+        return view('backend.pages.buses.create', compact('locations'));
     }
 
 /*
@@ -88,6 +90,7 @@ class busController extends Controller
             ->where('arrival_location', 'LIKE', '%' . $request->arrival_location . '%')
             ->where('departure_time', 'LIKE', '%' . $request->departure_time . '%')
             ->get();
-        return view('backend.pages.buses.find', compact('buses'));
+        $locations = Location::get();
+        return view('backend.pages.buses.find', compact('buses', 'locations'));
     }
 }

@@ -61,8 +61,11 @@
                             <select name="departure_location" class="form-control">
                                 <option value="">Select Departure Location</option>
 
-                                @foreach($buses as $bus)
-                                    <option value="{{ $bus->departure_location }}">{{ $bus->departure_location }}</option>
+
+
+
+                                @foreach($locations as $location)
+                                    <option value="{{ $location->location_name}}">{{ $location->location_name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -72,9 +75,9 @@
                             <select name="arrival_location" class="form-control">
                                 <option value="">Select Arrival Location</option>
 
-                                @foreach($buses as $bus)
-                                    <option value="{{ $bus->arrival_location }}">{{ $bus->arrival_location }}</option>
-                                @endforeach
+                                @foreach($locations as $location)
+                                <option value="{{ $location->location_name}}">{{ $location->location_name }}</option>
+                            @endforeach
                             </select>
                         </div>
 

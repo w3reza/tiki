@@ -139,14 +139,21 @@
                                 <h6 class="mb-0">Departure Location</h6>
                             </div>
                             <div class="col-md-10 pe-5">
-                                <input type="text" name="departure_location"
-                                    class="form-control form-control-lg  @if ($errors->has('departure_location')) is-invalid @elseif(old('name')) is-valid @endif"
-                                    placeholder="Departure Location" value="{{ old('departure_location') }}" />
-                                @error('departure_location')
-                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <div class="">
+                                    <select id="inputStatus" name="departure_location" class="form-control custom-select"
+                                        required>
+
+                                        <option selected disabled>Select one</option>
+                                        @foreach ($locations as $location)
+                                            <option value="{{ $location->location_name }}">{{ $location->location_name }}
+                                            </option>
+                                        @endforeach
+
+
+
+                                    </select>
+                                </div>
+
                             </div>
                         </div> <!--row end -->
 
@@ -158,14 +165,19 @@
 
                             </div>
                             <div class="col-md-10 pe-5">
-                                <input type="text" name="arrival_location"
-                                    class="form-control form-control-lg  @if ($errors->has('arrival_location')) is-invalid @elseif(old('name')) is-valid @endif"
-                                    placeholder="Arrival Location" value="{{ old('arrival_location') }}" />
-                                @error('arrival_location')
-                                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <select id="inputStatus" name="arrival_location" class="form-control custom-select"
+                                    required>
+
+                                    <option selected disabled>Select one</option>
+                                    @foreach ($locations as $location)
+                                        <option value="{{ $location->location_name }}">{{ $location->location_name }}
+                                        </option>
+                                    @endforeach
+
+
+
+                                </select>
+
                             </div>
                         </div> <!--row end -->
 
@@ -180,8 +192,9 @@
                                 <!-- Date and time -->
                                 <div class="form-group">
 
-                                    <div class="input-group date" id="datetimePicker" >
-                                        <input type="text" name="departure_time" class="form-control datetimepicker-input" data-target="#datetimePicker" />
+                                    <div class="input-group date" id="datetimePicker">
+                                        <input type="text" name="departure_time"
+                                            class="form-control datetimepicker-input" data-target="#datetimePicker" />
                                         <div class="input-group-append" data-target="#datetimePicker"
                                             data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
